@@ -11,10 +11,17 @@ jobs:
     runs-on: windows-2019
     steps:
     - uses: actions/checkout@v2
+    - uses: suisei-cn/actions-download-file@v1.3.0
+      id: downloadfile  # Remember to give an ID if you need the output filename
+      name: Download the file
+      with:
+        url: "https://github.com/runestubbe/Crinkler/releases/download/v2.3/crinkler23.zip"
+        target: .
     - uses: ilammy/msvc-dev-cmd@v1.12.1
       with:
         arch: x86
     - name: compile
+      continue-on-error: true
       run: | 
         dir
         cl /c /01 /GS- snake.c
@@ -22,9 +29,18 @@ jobs:
         # https://stackoverflow.com/a/53971921/2278742
         link /nologo /ENTRY:main /NODEFAULTLIB /SUBSYSTEM:WINDOWS snake.obj kernel32.lib user32.lib gdi32.lib ucrt.lib
         dir
+        tar -xf crinkler23.zip
+        dir
+        copy snake.obj snake-crinkler.obj
+        dir
+        crinkler23\Win32\Crinkler.exe /ENTRY:main /NODEFAULTLIB /SUBSYSTEM:WINDOWS snake-crinkler.obj kernel32.lib user32.lib gdi32.lib ucrt.lib
+        dir
     - name: upload executable
       uses: actions/upload-artifact@v2
       with:
         name: windows
         path: |
           snake.exe
+          #snake-crinkler.exe
+          dump0000_mini.dmp
+          dump0000_full.dmp
