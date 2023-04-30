@@ -12,10 +12,22 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: suisei-cn/actions-download-file@v1.3.0
-      id: downloadfile  # Remember to give an ID if you need the output filename
+      id: crinklerexe  # Remember to give an ID if you need the output filename
       name: Download the file
       with:
         url: "https://github.com/runestubbe/Crinkler/raw/master/releases/crinkler22/Win32/Crinkler.exe"
+        target: .
+    - uses: suisei-cn/actions-download-file@v1.3.0
+      id: crinklermap  # Remember to give an ID if you need the output filename
+      name: Download the file
+      with:
+        url: "https://github.com/runestubbe/Crinkler/raw/master/releases/crinkler22/Win32/Crinkler.map"
+        target: .
+    - uses: suisei-cn/actions-download-file@v1.3.0
+      id: crinklerpdb  # Remember to give an ID if you need the output filename
+      name: Download the file
+      with:
+        url: "https://github.com/runestubbe/Crinkler/raw/master/releases/crinkler22/Win32/Crinkler.pdb"
         target: .
     - uses: ilammy/msvc-dev-cmd@v1.12.1
       with:
