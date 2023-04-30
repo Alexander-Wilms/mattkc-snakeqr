@@ -31,7 +31,7 @@ jobs:
         dir
         copy snake.obj snake-crinkler.obj
         dir
-        Crinkler.exe /ENTRY:main /NODEFAULTLIB /SUBSYSTEM:WINDOWS snake-crinkler.obj kernel32.lib user32.lib gdi32.lib ucrt.lib
+        ./Crinkler.exe /ENTRY:main /NODEFAULTLIB /SUBSYSTEM:WINDOWS snake-crinkler.obj kernel32.lib user32.lib gdi32.lib ucrt.lib
         dir
     - name: upload executable
       uses: actions/upload-artifact@v2
