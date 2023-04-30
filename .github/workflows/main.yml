@@ -39,6 +39,6 @@ jobs:
         name: windows
         path: |
           snake.exe
-          #snake-crinkler.exe
-          dump0000_mini.dmp
-          dump0000_full.dmp
+          out.exe
+          #dump0000_mini.dmp
+          #dump0000_full.dmp
