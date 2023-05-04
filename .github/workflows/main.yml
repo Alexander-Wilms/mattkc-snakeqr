@@ -41,7 +41,7 @@ jobs:
         # https://stackoverflow.com/a/53971921/2278742
         link /nologo /ENTRY:main /NODEFAULTLIB /SUBSYSTEM:WINDOWS snake.obj kernel32.lib user32.lib gdi32.lib ucrt.lib
         dir
-        ./Crinkler.exe /ENTRY:main /NODEFAULTLIB /SUBSYSTEM:WINDOWS snake.obj kernel32.lib user32.lib gdi32.lib ucrt.lib
+        ./Crinkler.exe /ENTRY:main /SUBSYSTEM:WINDOWS snake.obj kernel32.lib user32.lib gdi32.lib ucrt.lib
         dir
     - name: upload executable
       uses: actions/upload-artifact@v2
